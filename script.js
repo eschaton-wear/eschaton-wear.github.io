@@ -19,7 +19,23 @@ document.addEventListener('DOMContentLoaded', function() {
     restoreCartFromStorage();
     setupEyeClick();
     setupModalsListeners();
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('success') === '1') {
+        cart = [];
+        updateCart();
+        localStorage.removeItem('eschaton_cart');
+
+        const status = document.getElementById('checkoutStatus');
+        if (status) {
+            status.textContent = 'Заказ отправлен! Мы свяжемся с вами в ближайшее время.';
+            status.style.color = '#00a854';
+        }
+
+        window.history.replaceState({}, '', window.location.pathname);
+    }
 });
+
 
 function setupModalsListeners() {
     // Cart icon click
@@ -347,3 +363,4 @@ async function submitCheckout(event) {
     // теперь просто отправляем форму на StaticForms
     form.submit();
 }
+
