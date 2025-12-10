@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESCHATON</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+</head>
+<div class="error-modal" id="errorModal">
+  <div class="error-modal-content">
+    <div class="error-modal-title">Ошибка</div>
+    <div class="error-modal-text">Ваша корзина пуста</div>
+    <button class="error-modal-btn" onclick="closeErrorModal()">Понятно</button>
+  </div>
+</div>
+
+<body>
+    <!-- SIDE TEXT - LEFT -->
+    <div class="side-text side-text-left">NEW ERA</div>
+
+    <!-- SIDE TEXT - RIGHT -->
+    <div class="side-text side-text-right">NEW ERA</div>
+
+    <!-- CART ICON (ALWAYS VISIBLE) -->
+    <div class="cart-icon" id="cartIcon">
+        <span class="cart-count" id="cartCount">0</span>
+        <div class="cart-divider-vertical"></div>
+    </div>
+
+    <!-- CART MODAL -->
+    <div class="cart-modal" id="cartModal">
+        <button class="cart-close" onclick="toggleCart()">✕</button>
+        <div class="cart-header">Корзина</div>
+        <div class="cart-items" id="cartItems">
+            <p style="text-align: center; color: #888; padding: 20px 0;">Корзина пуста</p>
+        </div>
+        <div class="cart-total">
+            <span>Итого:</span>
+            <span id="cartTotal">₽0</span>
+        </div>
+        <button class="cart-checkout" onclick="toggleCheckoutModal()">Оформить</button>
+    </div>
+
+    <!-- PRODUCT DETAIL MODAL -->
+    <div class="product-modal" id="productModal">
+        <div class="product-modal-content">
+            <button class="modal-close" onclick="closeProductModal()">✕</button>
+
+            <div class="product-modal-image" id="productImage">
+                <!-- Изображение товара -->
+            </div>
+
+            <div class="product-modal-info">
+                <h2 class="product-modal-name" id="productName">Одеяние I</h2>
+                <p class="product-modal-description" id="productDescription">
+                    Премиальное одеяние из натуральных материалов. Идеально для понимающих апокалипсис.
+                </p>
+
+                <div class="product-modal-size">
+                    <label>Размер:</label>
+                    <select id="productSize">
+                        <option value="xs">XS</option>
+                        <option value="s">S</option>
+                        <option value="m" selected>M</option>
+                        <option value="l">L</option>
+                        <option value="xl">XL</option>
+                        <option value="xxl">XXL</option>
+                    </select>
+                </div>
+
+                <div class="product-modal-price" id="productPrice">₽15,000</div>
+
+                <button class="product-modal-btn" onclick="addToCartFromModal()">Добавить в корзину</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-modal-content">
+            <button class="checkout-close" onclick="toggleCheckoutModal()">✕</button>
+
+            <h2 class="checkout-title">Оформление заказа</h2>
+
+            <form id="checkoutForm"
+                action="https://api.staticforms.dev/submit"
+                method="POST"
+                onsubmit="submitCheckout(event)"
+                novalidate>
+
+            <!-- ключ StaticForms -->
+            <input type="hidden" name="accessKey" value="sf_ihm6bflen13gj83ac14mc7a0">
+
+            <!-- тема письма -->
+            <input type="hidden" name="subject" value="Новый заказ с ESCHATON">
+
+            <!-- сюда из JS положим корзину и суммы -->
+            <input type="hidden" name="cart" id="cartJsonField">
+
+            <!-- поля пользователя (используй свои label/классы) -->
+            <input type="text"   name="name"    placeholder="ФИО"    required>
+            <input type="email"  name="email"   placeholder="Email"  required>
+            <input type="tel"    name="phone"   placeholder="Телефон" required>
+            <input type="text"   name="city"    placeholder="Город"  required>
+            <input type="text"   name="zip"     placeholder="Индекс" required>
+            <input type="text"   name="address" placeholder="Адрес"  required>
+
+
+            <div id="checkoutStatus" class="checkout-status"></div>
+            </form>
+
+
+                <p class="checkout-note">Доставка предварительно 400 ₽.</p>
+
+                <button type="submit" class="checkout-submit">Оформить заказ</button>
+            </form>
+
+            <p class="checkout-status" id="checkoutStatus"></p>
+        </div>
+    </div>
+
+    <!-- BRAND INFO MODAL -->
+    <div class="brand-modal" id="brandModal">
+        <div class="brand-modal-content">
+            <button class="brand-modal-close" onclick="toggleBrandModal()">✕</button>
+
+            <div class="brand-info">
+                <h2>ESCHATON</h2>
+                <p>Слово «eschaton» происходит от древнегреческого «ἔσχατον» (éskhaton), что означает «последняя вещь». В христианской теологии eschaton обозначает апокалипсис, приход высшей силы, предшествующей концу мира.</p>
+            </div>
+
+            <div class="brand-contacts">
+                <h3>Контакты</h3>
+                <div class="contact-links">
+                    <a href="https://www.instagram.com/eschaton_clothes?igsh=MXN1MHhyaWxpeDluZQ==" target="_blank">Instagram</a>
+                    <a href="https://t.me/Eschaton_wear" target="_blank">Telegram</a>
+                </div>
+            </div>
+
+            <div class="brand-footer">
+                <p>Сделано в Москве. Все права защищены © 2025 ESCHATON</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION - FULLSCREEN -->
+    <section class="hero">
+        <div class="hero-content">
+            <!-- ROTATING EYE -->
+            <div class="eye-container" id="eyeContainer">
+                <div class="eye-wrapper">
+                <div class="eye" id="eyeElement"></div>
+                </div>
+                <!-- PRODUCT CARDS -->
+                <div class="cards-wrapper" id="cardsWrapper">
+                    <div class="product-card"
+                        data-name="Одеяние I"
+                        data-price="15000"
+                        data-full="ESCHATON Одеяние I"
+                        data-description="Премиальное одеяние из натуральных материалов. Идеально для понимающих апокалипсис.">
+                        <div class="card-image">ESCHATON</div>
+                        <div class="card-divider"></div>
+                        <div class="card-name">Одеяние I</div>
+                    </div>
+                    <div class="product-card"
+                        data-name="Одеяние II"
+                        data-price="18000"
+                        data-full="ESCHATON Одеяние II"
+                        data-description="Коллекционное одеяние премиум-класса. Ограниченный выпуск для избранных.">
+                        <div class="card-image">ESCHATON</div>
+                        <div class="card-divider"></div>
+                        <div class="card-name">Одеяние II</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BRAND TEXT - CLICKABLE -->
+            <h1 class="brand-title" onclick="toggleBrandModal()">ESCHATON</h1>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
