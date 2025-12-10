@@ -85,33 +85,38 @@
             <h2 class="checkout-title">Оформление заказа</h2>
 
             <form id="checkoutForm"
-                action="https://api.staticforms.dev/submit"
-                method="POST"
-                onsubmit="submitCheckout(event)"
-                novalidate>
+      action="https://api.staticforms.dev/submit"
+      method="POST"
+      onsubmit="submitCheckout(event)"
+      novalidate>
 
-            <!-- ключ StaticForms -->
-            <input type="hidden" name="accessKey" value="sf_ihm6bflen13gj83ac14mc7a0">
+    <!-- ключ StaticForms -->
+    <input type="hidden" name="accessKey" value="sf_ihm6bflen13gj83ac14mc7a0">
 
-            <!-- тема письма -->
-            <input type="hidden" name="subject" value="Новый заказ с ESCHATON">
+    <!-- redirect обратно на сайт -->
+    <input type="hidden" name="redirectTo"
+           value="https://eschaton-wear.github.io/eschaton.github.io/?success=1">
 
-            <!-- сюда из JS положим корзину и суммы -->
-            <input type="hidden" name="cart" id="cartJsonField">
+    <!-- тема письма -->
+    <input type="hidden" name="subject" value="Новый заказ с ESCHATON">
 
-            <!-- поля пользователя (используй свои label/классы) -->
-            <input type="text" name="fullName" placeholder="ФИО" required>
-            <input type="email"  name="email"   placeholder="Email"  required>
-            <input type="tel"    name="phone"   placeholder="Телефон" required>
-            <input type="text"   name="city"    placeholder="Город"  required>
-            <input type="text"   name="zip"     placeholder="Индекс" required>
-            <input type="text"   name="address" placeholder="Адрес"  required>
-            <p class="checkout-note">Доставка предварительно 400 ₽.</p>
-            <button type="submit" class="checkout-submit">Оформить заказ</button>
-            <div id="checkoutStatus" class="checkout-status"></div>
-            
+    <!-- сюда из JS положим корзину и суммы -->
+    <input type="hidden" name="cart" id="cartJsonField">
 
-            <p class="checkout-status" id="checkoutStatus"></p>
+    <!-- поля пользователя -->
+    <input type="text"  name="fullName" placeholder="ФИО"     required>
+    <input type="email" name="email"    placeholder="Email"   required>
+    <input type="tel"   name="phone"    placeholder="Телефон" required>
+    <input type="text"  name="city"     placeholder="Город"   required>
+    <input type="text"  name="zip"      placeholder="Индекс"  required>
+    <input type="text"  name="address"  placeholder="Адрес"   required>
+
+    <p class="checkout-note">Доставка предварительно 400 ₽.</p>
+    <button type="submit" class="checkout-submit">Оформить заказ</button>
+
+    <div id="checkoutStatus" class="checkout-status"></div>
+</form>
+
         </div>
     </div>
 
@@ -178,6 +183,7 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
