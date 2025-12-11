@@ -371,7 +371,7 @@ body {
     border: none;
     font-size: 24px;
     cursor: pointer;
-    color: #000000;
+    color: #ffffff;
 }
 
 .cart-items {
@@ -414,8 +414,8 @@ body {
 .cart-checkout {
     width: 100%;
     padding: 12px;
-    background: #000000;
-    color: #ffffff;
+    background: #ffffff;   /* было #000000 */
+    color: #000000; 
     border: none;
     border-radius: 2px;
     font-size: 12px;
@@ -428,7 +428,7 @@ body {
 
 
 .cart-checkout:hover {
-    opacity: 0.85;
+    opacity: 0.9;
     transform: scale(1.02);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
@@ -968,6 +968,7 @@ body {
     opacity: 0.92;
     transform: scale(1.02);
 }
+
 
 
 
