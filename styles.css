@@ -25,9 +25,9 @@ body {
     position: fixed;
     top: 50%;
     transform: translateY(-50%) rotate(-90deg);
-    font-size: 24px;
+    font-size: 28px;        /* было 24px */
     font-weight: 300;
-    letter-spacing: 8px;
+    letter-spacing: 18px;   /* было 8px */
     text-transform: uppercase;
     z-index: 5;
     white-space: nowrap;
@@ -968,6 +968,7 @@ body {
     opacity: 0.92;
     transform: scale(1.02);
 }
+
 
 
 
