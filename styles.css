@@ -147,8 +147,8 @@ body {
 .product-card {
     position: absolute;
     width: 140px;
-    background: #f9f9f9;
-    border: 1px solid #d0d0d0;
+    background: #0a0a0a;
+    border: 1px solid #333333;
     padding: 0;
     text-align: center;
     border-radius: 2px;
@@ -204,12 +204,15 @@ body {
 
 /* DIVIDER */
 .card-divider {
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #e0e0e0 20%, #e0e0e0 80%, transparent);
-    position: relative;
-    margin: 8px 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #333333 20%,
+        #333333 80%,
+        transparent
+    );
 }
+
 
 
 .card-name {
@@ -276,7 +279,7 @@ body {
     width: 56px;
     height: 56px;
     background: transparent;
-    border: 3px solid #000000;
+    border: 3px solid #ffffff;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -302,8 +305,8 @@ body {
     right: -14px;
     width: 24px;
     height: 24px;
-    background: #000000;
-    color: #ffffff;
+    background: #ffffff;
+    color: #000000;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -319,7 +322,7 @@ body {
     position: absolute;
     width: 10px;
     height: 102%;
-    background: #000000;
+    background: #ffffff;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -333,14 +336,14 @@ body {
     right: -400px;
     width: 400px;
     height: 100vh;
-    background: #f9f9f9;
+    background: #0a0a0a;
     box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
     transition: right 0.3s ease-out;
     z-index: 200;
     display: flex;
     flex-direction: column;
     padding: 30px 20px;
-    border-left: 1px solid #e0e0e0;
+    border-left: 1px solid #333333;
 }
 
 
@@ -380,7 +383,7 @@ body {
 
 .cart-item {
     padding: 12px 0;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #333333;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -398,7 +401,7 @@ body {
 
 
 .cart-total {
-    border-top: 2px solid #000000;
+    border-top: 2px solid #ffffff;
     padding-top: 15px;
     font-size: 14px;
     font-weight: 600;
@@ -965,5 +968,6 @@ body {
     opacity: 0.92;
     transform: scale(1.02);
 }
+
 
 
